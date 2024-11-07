@@ -43,7 +43,7 @@ function Register() {
       setIsSubmitting(true);
       const res = await axios.post("/api/auth/register", e);
 
-      toast.success(res.data.message || "Signup successful!");
+      toast.success(res.data.message);
       console.log(res);
       {
         res.data.success && reset();

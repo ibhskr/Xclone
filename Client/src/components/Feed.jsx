@@ -32,7 +32,7 @@ const Feed = () => {
 
   if (error) {
     navigate("/register");
-    console.log(error);
+    // console.log(error);
   } else {
     return (
       <div className="flex flex-col w-full py-2 bg-black text-white overflow-y-scroll">
