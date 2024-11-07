@@ -2,8 +2,9 @@ import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
-
-process.loadEnvFile();
+import dotenv from "dotenv";
+dotenv.config();
+// process.loadEnvFile();
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,

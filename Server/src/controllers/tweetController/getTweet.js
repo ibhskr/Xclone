@@ -22,7 +22,7 @@ export const getTweets = async (req, res) => {
         .sort({
           createdAt: -1,
         }) // Sort by latest tweets
-        .populate("author", "username name isVerified"); //populate author details only username and name , _id will get default
+        .populate("author", "username profilePicture name isVerified"); //populate author details only username and name , _id will get default
 
       return res.status(200).json({
         success: true,
