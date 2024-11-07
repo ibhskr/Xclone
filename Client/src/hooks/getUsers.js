@@ -8,7 +8,6 @@ const getUsers = (name = "random") => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        console.log("api called");
         setLoading(true);
         const response = await axios.get(`/api/users/?name=${name}`);
         setUsersList(response.data.users);

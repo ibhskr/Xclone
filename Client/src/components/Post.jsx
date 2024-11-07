@@ -190,7 +190,7 @@ export const Comment = ({ tweet_id }) => {
     try {
       setLoading(true);
       let res = await axios.post(`/api/tweets/${tweet_id}/comment`, data);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.success) {
         toast.success(res.data.message);
         reset();
