@@ -1,8 +1,8 @@
-// Multer Middleware Setup (cloudinaryConfig.js)
-import { CloudinaryStorage } from "multer-storage-cloudinary";
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
+import fs from "fs";
+
 process.loadEnvFile();
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -10,12 +10,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "xClone", // Upload to a specific Cloudinary folder
-    format: "jpg", // Set file format (e.g., jpg, png)
-    public_id: (req, file) => `${uuidv4()}-${file.originalname}`, // Unique filename
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/temp");
+  },
+  filename: function (req, file, cb) {
+    const uniqueName = `${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueName);
   },
 });
 

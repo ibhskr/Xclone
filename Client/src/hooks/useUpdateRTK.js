@@ -12,7 +12,7 @@ const useUpdateRTK = () => {
     try {
       const res = await axios.get("/api/auth/");
       dispatch(setUser(res.data.user));
-      toast.success("User fetched successfully");
+      // toast.success("User fetched successfully");
     } catch (error) {
       navigate("/register");
       toast.error("Login expired.");
